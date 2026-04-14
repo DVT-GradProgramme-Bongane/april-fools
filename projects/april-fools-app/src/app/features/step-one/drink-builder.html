@@ -10,7 +10,7 @@
   <h3>Milk</h3>
   <mat-chip-listbox [(ngModel)]="selectedMilk" >
     @for( milk of milkTypes; track milk.id ){
-      <mat-chip-option>
+      <mat-chip-option [value]="milk">
         {{ milk.name}}
       </mat-chip-option>
     }
@@ -18,7 +18,7 @@
   <h3>Cup Size</h3>
   <mat-chip-listbox [(ngModel)]="selectedCupSize" >
     @for( cupSize of cupSizes; track cupSize.id ){
-      <mat-chip-option>
+      <mat-chip-option [value]="cupSize">
         {{ cupSize.name}}
       </mat-chip-option>
     }

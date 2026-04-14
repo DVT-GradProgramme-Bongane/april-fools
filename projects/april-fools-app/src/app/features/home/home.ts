@@ -3,10 +3,11 @@ import { MatIcon } from "@angular/material/icon";
 import { MatTabGroup, MatTabsModule } from "@angular/material/tabs";
 import { MatToolbar } from "@angular/material/toolbar";
 import { DrinkBuilder } from "../step-one/drink-builder";
+import { Customize } from "../step-two/customize";
 
 @Component({
   selector : 'app-home',
-  imports : [MatTabsModule, MatToolbar, MatIcon, DrinkBuilder],
+  imports: [MatTabsModule, MatToolbar, MatIcon, DrinkBuilder, Customize],
   templateUrl : './home.html',
   styleUrl : './home.css'
 }

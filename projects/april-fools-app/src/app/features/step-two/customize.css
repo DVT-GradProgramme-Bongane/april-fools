@@ -1,0 +1,13 @@
+.mat-mdc-slider {
+  max-width: 450px;
+  width: 100%;
+}
+
+.brew-temperature,
+.foam-density {
+  margin-bottom: 20px;
+}
+
+.syrup-extra{
+  margin-bottom: 20px;
+}

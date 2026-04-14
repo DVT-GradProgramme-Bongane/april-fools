@@ -1,0 +1,67 @@
+<main class="customize-main">
+  <div class="temperature">
+
+    <section class="brew-temperature">
+      <h3>Temperature</h3>
+      <mat-card>
+        <mat-card-content>
+          
+          
+          Brew temperature
+          <mat-slider
+          class="example-margin"
+          [max]="100"
+          [min]="0"
+          [step]="1"
+          [discrete]="true"
+          >
+          <input matSliderThumb [(ngModel)]="temperatureValue" #slider>
+        </mat-slider>
+        
+        <span>{{ temperatureValue }}&deg;C</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </section>
+
+   
+
+  <section class="foam-density">
+    <mat-card>
+      <mat-card-content>
+        
+        
+        Foam density
+        <mat-slider
+        class="example-margin"
+        [max]="10"
+        [min]="0"
+        [step]="1"
+        [discrete]="true"
+        >
+        <input matSliderThumb [(ngModel)]="foamDensityValue" #slider>
+      </mat-slider>
+      
+      <span>{{ foamDensityValue }}</span>
+    </mat-card-content>
+    
+  </mat-card>
+</section>
+</div>
+
+<mat-divider></mat-divider>
+
+<section class="syrup-extra">
+  <h3>Syrup and Extras</h3>
+  <mat-chip-set >
+    @for (syrup of availableSyrups; track $index) {
+      <mat-chip-row (click)="selectSyrup(syrup)">
+        {{ syrup.name }}
+      </mat-chip-row>
+    }
+    </mat-chip-set>
+   
+</section>
+
+<mat-divider></mat-divider>
+</main>

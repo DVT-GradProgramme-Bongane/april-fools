@@ -13,6 +13,11 @@ export interface CupSize {
   name: string,
 }
 
+export interface Syrup{
+  id: string,
+  name: string,
+}
+
 export const COFFEE_BASE: CoffeeBase[] = [
   {id: "espresso" , name: "Espresso"}, 
   {id: "americano", name: "Americano"}, 
@@ -34,4 +39,10 @@ export const CUP_SIZE : CupSize[] = [
   {id: "tall", name: "Tall"},
   {id: "grande", name: "Grande"},
   {id: "venti", name: "Venti"},
+]
+
+export const SYRUP_TYPES : Syrup[] =[
+  {id : "vanila", name : "Vanilla Syrup"},
+  {id: "chocolate", name: "Chocolate Syrup"},
+  {id: "caramel", name: "Caramel Syrup"},
 ]

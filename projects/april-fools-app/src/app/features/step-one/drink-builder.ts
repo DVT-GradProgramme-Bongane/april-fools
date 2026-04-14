@@ -15,13 +15,13 @@ import { MatButton, MatFabButton } from "@angular/material/button";
 })
 export class DrinkBuilder{
   coffeeBases =  COFFEE_BASE;
-  selectedBase!: CoffeeBase;
+  selectedBase: CoffeeBase = this.coffeeBases[0];
 
   milkTypes = MILK;
-  selectedMilk! : Milk;
+  selectedMilk : Milk = this.milkTypes[0];
 
   cupSizes = CUP_SIZE;
-  selectedCupSize! : CupSize;
+  selectedCupSize : CupSize = this.cupSizes[0];
 
   next = output<void>();
 
