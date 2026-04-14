@@ -2,7 +2,7 @@
 <main class="main">
   <mat-tab-group #homeTabs>
     <mat-tab label="Base"><app-drink-builder (next)="handleNext(homeTabs)" /> </mat-tab>
-    <mat-tab label="Customize"><app-customize /></mat-tab>
+    <mat-tab label="Customize"><app-customize (back)="handleBack(homeTabs)" (review)="handleNext(homeTabs)"/></mat-tab>
     <mat-tab label="Confirm"> Content 3 </mat-tab>
   </mat-tab-group>
 </main>

@@ -17,4 +17,10 @@ export class HomePage {
       tabs.selectedIndex = (tabs.selectedIndex ?? 0) + 1;
     }
   }
+
+  handleBack(tabs: MatTabGroup){
+    if ((tabs.selectedIndex ?? 0) < tabs._allTabs.length) {
+      tabs.selectedIndex = (tabs.selectedIndex ?? 0) - 1;
+    }
+  }
 }

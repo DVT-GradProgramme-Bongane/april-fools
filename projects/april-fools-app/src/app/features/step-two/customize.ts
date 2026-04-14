@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
@@ -20,6 +20,7 @@ import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/bu
     MatIcon,
     MatListModule,
     MatIconButton,
+    MatButton
   ],
   templateUrl: './customize.html',
   styleUrl: './customize.css',
@@ -33,6 +34,9 @@ export class Customize {
     dosage: number;
   }[] = [];
   syrupDosage = 0;
+
+  back = output<void>();
+  review = output<void>();
 
   selectSyrup(selectedSyrup: Syrup) {
     this.selectedSyrups.push({ syrup: selectedSyrup, dosage: 0 });
@@ -62,5 +66,12 @@ export class Customize {
         selectedSyrup.dosage--;
       }
     });
+  }
+
+  onBack(){
+    this.back.emit();
+  }
+  onReview(){
+    this.review.emit();
   }
 }
