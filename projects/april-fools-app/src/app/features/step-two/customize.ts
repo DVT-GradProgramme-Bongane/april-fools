@@ -68,10 +68,12 @@ export class Customize {
     });
   }
 
-  onBack(){
+  onBack(event: MouseEvent){
+    (event.currentTarget as HTMLButtonElement).blur();
     this.back.emit();
   }
-  onReview(){
+  onReview(event: MouseEvent){
+    (event.currentTarget as HTMLButtonElement).blur(); // Remove focus from cuurrent tab, for keyboard navigation and screen readers
     this.review.emit();
   }
 }

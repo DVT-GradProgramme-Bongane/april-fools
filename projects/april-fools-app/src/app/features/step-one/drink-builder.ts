@@ -32,7 +32,8 @@ export class DrinkBuilder {
 
   next = output<void>();
 
-  onNext() {
+  onNext(event: MouseEvent) {
+    (event.currentTarget as HTMLButtonElement).blur();
     this.next.emit();
   }
 }
