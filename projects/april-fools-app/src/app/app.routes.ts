@@ -3,8 +3,8 @@ import { HomePage } from './features/home/home';
 
 export const routes: Routes = [
   {
-    path : '',
-    title : 'Home Page',
-    component : HomePage
-  }
+    path: '',
+    title: 'Home Page',
+    component: HomePage,
+  },
 ];

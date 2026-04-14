@@ -8,6 +8,27 @@
   margin-bottom: 20px;
 }
 
-.syrup-extra{
+.syrup-extra {
   margin-bottom: 20px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-syrup-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip-placeholder {
+  height: 32px;
+  width: 100%;
+}
+
+.selected-syrup-list mat-card + mat-card {
+  margin-top: 10px;
 }
