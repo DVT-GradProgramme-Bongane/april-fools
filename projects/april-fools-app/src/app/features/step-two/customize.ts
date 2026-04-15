@@ -8,6 +8,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { SyrupDetails } from '../../model/syrup';
 import { ChaosService } from '../../core/services/chaos';
 
@@ -24,6 +27,9 @@ import { ChaosService } from '../../core/services/chaos';
     MatIconButton,
     MatButton,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
   ],
   templateUrl: './customize.html',
   styleUrl: './customize.css',
@@ -42,6 +48,9 @@ export class Customize implements OnDestroy {
   displayFoam = signal(7); // fake foam
 
   private chaosService = inject(ChaosService);
+  private _chaoticSnackBar = inject(MatSnackBar);
+  chaosButton = signal(false);
+  chaosSnackBarDuration = 2;
 
   constructor() {
     this.chaosService.startChaos(this.temperature, this.displayTemp);
@@ -51,6 +60,25 @@ export class Customize implements OnDestroy {
   // Chaotic behaviour
   onMouseEnter(event: MouseEvent) {
     this.chaosService.onMouseEnter(event);
+  }
+
+  openSnackBar() {
+    this._chaoticSnackBar.open('Did you want to order a drink?', '', {
+      duration: this.chaosSnackBarDuration * 1000,
+    });
+  }
+
+  onButtonEnter(event: MouseEvent) {
+    event.target!.addEventListener(
+      'mouseenter',
+      () => {
+        this.chaosButton.set(true);
+        setTimeout(() => {
+          this.chaosButton.set(false);
+        }, 3000);
+      },
+      { once: true },
+    );
   }
 
   onTemperatureInput(event: Event) {

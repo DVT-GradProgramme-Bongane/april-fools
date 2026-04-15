@@ -14,11 +14,11 @@ export class ChaosService {
     }, 2000); // Every two seconds figit with displayed value
   }
 
-   onMouseEnter(event: MouseEvent) {
+  onMouseEnter(event: MouseEvent) {
     const chip = event.currentTarget as HTMLElement;
     chip.style.marginRight = '100px';
     chip.style.marginLeft = '100px';
-    
+
     setTimeout(() => {
       chip.style.marginRight = '';
       chip.style.marginLeft = '';
