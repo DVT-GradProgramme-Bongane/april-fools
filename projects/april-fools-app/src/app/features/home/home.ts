@@ -5,9 +5,16 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { DrinkBuilder } from '../step-one/drink-builder';
 import { Customize } from '../step-two/customize';
 import { Confirm } from '../step-three/confirm';
-import { CoffeeDetails } from '../../model/coffeeDetails';
-import { COFFEE_BASE, CoffeeBase, CUP_SIZE, CupSize, MILK, Milk } from '../../core/constants/ingredients';
-import { FormControl } from '@angular/forms';
+import {
+  COFFEE_BASE,
+  CoffeeBase,
+  CUP_SIZE,
+  CupSize,
+  MILK,
+  Milk,
+  SYRUP_TYPES,
+} from '../../core/constants/ingredients';
+import { SyrupDetails } from '../../model/syrup';
 
 @Component({
   selector: 'app-home',
@@ -23,9 +30,12 @@ export class HomePage {
   cupSizes = CUP_SIZE;
   selectedCupSize = signal<CupSize>(this.cupSizes[0]);
 
-  temperature =  signal<number>(79);
+  temperature = signal<number>(79);
   foamDensity = signal<number>(7);
-  
+
+  availableSyrup = signal(SYRUP_TYPES);
+  selectedSyrups = signal<SyrupDetails[]>([]);
+
   coffeeDetails = computed(() => ({
     drink: {
       base: this.selectedBase(),
@@ -34,8 +44,10 @@ export class HomePage {
     },
     temperature: this.temperature(),
     foam: this.foamDensity(),
-    syrups: [],
-}));
+    syrups: this.selectedSyrups(),
+  }));
+
+  total = computed(() => 0);
 
   drinkDetails = signal<CoffeeBase>({ name: '', id: '' });
 

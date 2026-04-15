@@ -25,10 +25,10 @@
         </div>
         <div class="drink-details">
           <span>Syrups</span>
-          <span>
+          <span class="syrup-details">
             @for (syrup of coffeeDetails().syrups; track $index) {
               <span>{{ syrup.syrup.name }}</span>
-              <span><mat-icon>close</mat-icon>{{ syrup.dosage }}</span>
+              <span> × {{ syrup.dosage }}, </span>
             }
           </span>
         </div>
@@ -36,7 +36,10 @@
     </div>
     <mat-card-footer>
       <mat-divider></mat-divider>
-      Total
+      <span class="drink-details">
+        <span>Total</span>
+        <span>{{ total() | rand }}</span>
+      </span>
     </mat-card-footer>
   </mat-card>
 </main>

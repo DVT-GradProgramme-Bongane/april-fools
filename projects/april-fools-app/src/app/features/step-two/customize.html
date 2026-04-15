@@ -6,7 +6,12 @@
         <mat-card-content>
           Brew temperature
           <mat-slider class="example-margin" [max]="100" [min]="0" [step]="1" [discrete]="true">
-            <input matSliderThumb [value]="temperature()" (input)="onTemperatureInput($event)" #slider />
+            <input
+              matSliderThumb
+              [value]="temperature()"
+              (input)="onTemperatureInput($event)"
+              #slider
+            />
           </mat-slider>
 
           <span>{{ temperature() }}&deg;C</span>
@@ -18,8 +23,8 @@
       <mat-card>
         <mat-card-content>
           Foam density
-          <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true" >
-            <input matSliderThumb  #slider [value]="foamDensity()" (input)="onFoamInput($event)" />
+          <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true">
+            <input matSliderThumb #slider [value]="foamDensity()" (input)="onFoamInput($event)" />
           </mat-slider>
 
           <span>{{ foamDensity() }}</span>
@@ -33,10 +38,10 @@
   <section class="syrup-extra">
     <h3>Syrup and Extras</h3>
     <mat-chip-set>
-      @if (availableSyrups.length === 0) {
+      @if (availableSyrups.length !== 0) {
         <div class="chip-placeholder"></div>
       } @else {
-        @for (syrup of availableSyrups; track $index) {
+        @for (syrup of availableSyrups(); track $index) {
           <mat-chip-row (click)="selectSyrup(syrup)">
             {{ syrup.name }}
           </mat-chip-row>
@@ -44,7 +49,7 @@
       }
     </mat-chip-set>
     <div class="selected-syrup-list">
-      @for (syrup of selectedSyrups; track syrup.syrup.name) {
+      @for (syrup of selectedSyrups(); track syrup.syrup.name) {
         <mat-card>
           <div class="card-content">
             {{ syrup.syrup.name }}

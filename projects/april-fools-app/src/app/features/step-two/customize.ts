@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { SyrupDetails } from '../../model/syrup';
 
 @Component({
   selector: 'app-customize',
@@ -21,18 +22,14 @@ import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/bu
     MatListModule,
     MatIconButton,
     MatButton,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './customize.html',
   styleUrl: './customize.css',
 })
 export class Customize {
-
-  availableSyrups: Syrup[] = SYRUP_TYPES;
-  selectedSyrups: {
-    syrup: Syrup;
-    dosage: number;
-  }[] = [];
+  availableSyrups = model<Syrup[]>([]);
+  selectedSyrups = model<SyrupDetails[]>([]);
   syrupDosage = 0;
 
   back = output<void>();
@@ -41,43 +38,50 @@ export class Customize {
   temperature = model.required<number>();
   foamDensity = model.required<number>();
 
- 
-  onTemperatureInput(event: Event){
+  onTemperatureInput(event: Event) {
     this.temperature.set((event.target as HTMLInputElement).valueAsNumber);
   }
 
-  onFoamInput(event : Event){
-    this.foamDensity.set((event.target as HTMLInputElement).valueAsNumber)
+  onFoamInput(event: Event) {
+    this.foamDensity.set((event.target as HTMLInputElement).valueAsNumber);
   }
 
   selectSyrup(selectedSyrup: Syrup) {
-    this.selectedSyrups.push({ syrup: selectedSyrup, dosage: 1 });
+    this.selectedSyrups().push({ syrup: selectedSyrup, dosage: 1 });
 
-    this.availableSyrups = this.availableSyrups.filter((syrup) => syrup.id !== selectedSyrup.id);
+    this.availableSyrups.update((syrups) =>
+      syrups?.filter((syrup) => syrup.id !== selectedSyrup.id),
+    );
   }
 
   removeSyrup(syrupToRemove: Syrup) {
-    this.selectedSyrups = this.selectedSyrups.filter(
-      (syrup) => syrup.syrup.id !== syrupToRemove.id,
+    this.selectedSyrups.set(
+      this.selectedSyrups().filter((syrup) => syrup.syrup.id !== syrupToRemove.id),
     );
 
-    this.availableSyrups.push(syrupToRemove);
+    this.availableSyrups.update((syrups) => [...(syrups ?? []), syrupToRemove]);
   }
 
   increase(syrup: Syrup) {
-    this.selectedSyrups.map((selectedSyrup) => {
-      if (selectedSyrup.syrup.id === syrup.id) {
-        selectedSyrup.dosage++;
-      }
-    });
+    this.selectedSyrups.set(
+      this.selectedSyrups().map((selectedSyrup) => {
+        if (selectedSyrup.syrup.id === syrup.id) {
+          selectedSyrup.dosage++;
+        }
+        return selectedSyrup;
+      }),
+    );
   }
 
   decrease(syrup: Syrup) {
-    this.selectedSyrups.map((selectedSyrup) => {
-      if (selectedSyrup.dosage > 0 && selectedSyrup.syrup.id === syrup.id) {
-        selectedSyrup.dosage--;
-      }
-    });
+    this.selectedSyrups.set(
+      this.selectedSyrups().map((selectedSyrup) => {
+        if (selectedSyrup.dosage > 0 && selectedSyrup.syrup.id === syrup.id) {
+          selectedSyrup.dosage--;
+        }
+        return selectedSyrup;
+      }),
+    );
   }
 
   onBack(event: MouseEvent) {

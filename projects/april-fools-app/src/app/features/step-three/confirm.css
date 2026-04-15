@@ -17,3 +17,7 @@ mat-card {
 mat-card-footer {
   height: 48px;
 }
+
+.syrup-details {
+  align-items: center;
+}

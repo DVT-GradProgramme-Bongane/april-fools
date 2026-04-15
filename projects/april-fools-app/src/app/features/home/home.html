@@ -2,12 +2,12 @@
 <main class="main">
   <mat-tab-group #homeTabs>
     <mat-tab label="Base">
-      <app-drink-builder 
-      (next)="handleNext(homeTabs)"
-      [(selectedBase)]="selectedBase"
-      [(selectedCupSize)]="selectedCupSize"
-      [(selectedMilk)]="selectedMilk" 
-      /> 
+      <app-drink-builder
+        (next)="handleNext(homeTabs)"
+        [(selectedBase)]="selectedBase"
+        [(selectedCupSize)]="selectedCupSize"
+        [(selectedMilk)]="selectedMilk"
+      />
     </mat-tab>
     <mat-tab label="Customize"
       ><app-customize
@@ -15,7 +15,14 @@
         (review)="handleNext(homeTabs)"
         [(temperature)]="temperature"
         [(foamDensity)]="foamDensity"
+        [(availableSyrups)]="availableSyrup"
+        [(selectedSyrups)]="selectedSyrups"
     /></mat-tab>
-    <mat-tab label="Confirm"> <app-confirm [coffeeDetails]="coffeeDetails()" /> </mat-tab>
+    <mat-tab label="Confirm"> 
+      <app-confirm 
+      [coffeeDetails]="coffeeDetails()"
+      [total]="total()" 
+      /> 
+    </mat-tab>
   </mat-tab-group>
 </main>
