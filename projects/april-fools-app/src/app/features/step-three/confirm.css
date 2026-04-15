@@ -1,0 +1,19 @@
+mat-card {
+  height: 170px;
+  padding: 6px;
+}
+
+.card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.drink-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card-footer {
+  height: 48px;
+}

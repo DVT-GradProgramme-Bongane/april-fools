@@ -1,5 +1,5 @@
-import { Component, output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, input, model, output } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
@@ -20,14 +20,14 @@ import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/bu
     MatIcon,
     MatListModule,
     MatIconButton,
-    MatButton
+    MatButton,
+    ReactiveFormsModule
   ],
   templateUrl: './customize.html',
   styleUrl: './customize.css',
 })
 export class Customize {
-  temperatureValue = 79;
-  foamDensityValue = 7;
+
   availableSyrups: Syrup[] = SYRUP_TYPES;
   selectedSyrups: {
     syrup: Syrup;
@@ -38,8 +38,20 @@ export class Customize {
   back = output<void>();
   review = output<void>();
 
+  temperature = model.required<number>();
+  foamDensity = model.required<number>();
+
+ 
+  onTemperatureInput(event: Event){
+    this.temperature.set((event.target as HTMLInputElement).valueAsNumber);
+  }
+
+  onFoamInput(event : Event){
+    this.foamDensity.set((event.target as HTMLInputElement).valueAsNumber)
+  }
+
   selectSyrup(selectedSyrup: Syrup) {
-    this.selectedSyrups.push({ syrup: selectedSyrup, dosage: 0 });
+    this.selectedSyrups.push({ syrup: selectedSyrup, dosage: 1 });
 
     this.availableSyrups = this.availableSyrups.filter((syrup) => syrup.id !== selectedSyrup.id);
   }
@@ -68,11 +80,11 @@ export class Customize {
     });
   }
 
-  onBack(event: MouseEvent){
+  onBack(event: MouseEvent) {
     (event.currentTarget as HTMLButtonElement).blur();
     this.back.emit();
   }
-  onReview(event: MouseEvent){
+  onReview(event: MouseEvent) {
     (event.currentTarget as HTMLButtonElement).blur(); // Remove focus from cuurrent tab, for keyboard navigation and screen readers
     this.review.emit();
   }

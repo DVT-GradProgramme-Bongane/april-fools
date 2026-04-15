@@ -6,10 +6,10 @@
         <mat-card-content>
           Brew temperature
           <mat-slider class="example-margin" [max]="100" [min]="0" [step]="1" [discrete]="true">
-            <input matSliderThumb [(ngModel)]="temperatureValue" #slider />
+            <input matSliderThumb [value]="temperature()" (input)="onTemperatureInput($event)" #slider />
           </mat-slider>
 
-          <span>{{ temperatureValue }}&deg;C</span>
+          <span>{{ temperature() }}&deg;C</span>
         </mat-card-content>
       </mat-card>
     </section>
@@ -18,11 +18,11 @@
       <mat-card>
         <mat-card-content>
           Foam density
-          <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true">
-            <input matSliderThumb [(ngModel)]="foamDensityValue" #slider />
+          <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true" >
+            <input matSliderThumb  #slider [value]="foamDensity()" (input)="onFoamInput($event)" />
           </mat-slider>
 
-          <span>{{ foamDensityValue }}</span>
+          <span>{{ foamDensity() }}</span>
         </mat-card-content>
       </mat-card>
     </section>
@@ -68,7 +68,6 @@
 
   <mat-divider></mat-divider>
   <div class="finalize-actions">
-
     <button matButton="outlined" class="back-button" (click)="onBack($event)">
       Back <mat-icon>chevron_left</mat-icon>
     </button>
