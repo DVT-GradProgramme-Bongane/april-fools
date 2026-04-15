@@ -1,9 +1,9 @@
-import { Component, inject, input, model, OnDestroy, output, signal } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCard, MatCardModule } from '@angular/material/card';
+import { Component, inject,  model, OnDestroy, output, signal } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
-import { Syrup, SYRUP_TYPES } from '../../core/constants/ingredients';
+import { Syrup} from '../../core/constants/ingredients';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
