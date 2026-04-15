@@ -8,7 +8,7 @@
           <mat-slider class="example-margin" [max]="100" [min]="0" [step]="1" [discrete]="true">
             <input
               matSliderThumb
-              [value]="temperature()"
+              [value]="displayTemp()"
               (input)="onTemperatureInput($event)"
               #slider
             />
@@ -24,7 +24,7 @@
         <mat-card-content>
           Foam density
           <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true">
-            <input matSliderThumb #slider [value]="foamDensity()" (input)="onFoamInput($event)" />
+            <input matSliderThumb #slider [value]="displayFoam()" (input)="onFoamInput($event)" />
           </mat-slider>
 
           <span>{{ foamDensity() }}</span>
