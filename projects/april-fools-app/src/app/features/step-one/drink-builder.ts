@@ -1,4 +1,4 @@
-import { Component, NgModule, output } from '@angular/core';
+import { Component, model, NgModule, output } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {
   COFFEE_BASE,
@@ -22,13 +22,13 @@ import { MatButton, MatFabButton } from '@angular/material/button';
 })
 export class DrinkBuilder {
   coffeeBases = COFFEE_BASE;
-  selectedBase: CoffeeBase = this.coffeeBases[0];
+  selectedBase = model<CoffeeBase>();
 
   milkTypes = MILK;
-  selectedMilk: Milk = this.milkTypes[0];
+  selectedMilk = model<Milk>();
 
   cupSizes = CUP_SIZE;
-  selectedCupSize: CupSize = this.cupSizes[0];
+  selectedCupSize = model<CupSize>();
 
   next = output<void>();
 

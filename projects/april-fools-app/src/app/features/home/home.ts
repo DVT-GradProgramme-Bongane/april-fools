@@ -6,7 +6,7 @@ import { DrinkBuilder } from '../step-one/drink-builder';
 import { Customize } from '../step-two/customize';
 import { Confirm } from '../step-three/confirm';
 import { CoffeeDetails } from '../../model/coffeeDetails';
-import { CoffeeBase } from '../../core/constants/ingredients';
+import { COFFEE_BASE, CoffeeBase, CUP_SIZE, CupSize, MILK, Milk } from '../../core/constants/ingredients';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,14 +16,21 @@ import { FormControl } from '@angular/forms';
   styleUrl: './home.css',
 })
 export class HomePage {
+  coffeeBases = COFFEE_BASE;
+  selectedBase = signal<CoffeeBase>(this.coffeeBases[0]);
+  milkTypes = MILK;
+  selectedMilk = signal<Milk>(this.milkTypes[0]);
+  cupSizes = CUP_SIZE;
+  selectedCupSize = signal<CupSize>(this.cupSizes[0]);
+
   temperature =  signal<number>(79);
   foamDensity = signal<number>(7);
   
   coffeeDetails = computed(() => ({
     drink: {
-      base: { id: '', name: '' },
-      milk: { id: '', name: '' },
-      cup: { id: '', name: '' },
+      base: this.selectedBase(),
+      milk: this.selectedMilk(),
+      cup: this.selectedCupSize(),
     },
     temperature: this.temperature(),
     foam: this.foamDensity(),
