@@ -18,7 +18,8 @@ export class ChaosService {
     const chip = event.currentTarget as HTMLElement;
     chip.style.marginRight = '100px';
     chip.style.marginLeft = '100px';
-
+    
+    // Reset margins after .3s
     setTimeout(() => {
       chip.style.marginRight = '';
       chip.style.marginLeft = '';

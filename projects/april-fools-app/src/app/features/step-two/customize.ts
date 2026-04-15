@@ -7,10 +7,9 @@ import { Syrup} from '../../core/constants/ingredients';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatButton, MatMiniFabButton, MatIconButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { SyrupDetails } from '../../model/syrup';
 import { ChaosService } from '../../core/services/chaos';
 
@@ -18,7 +17,6 @@ import { ChaosService } from '../../core/services/chaos';
   selector: 'app-customize',
   imports: [
     MatSliderModule,
-    FormsModule,
     MatCardModule,
     MatDivider,
     MatChipsModule,
@@ -28,8 +26,7 @@ import { ChaosService } from '../../core/services/chaos';
     MatButton,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule,
-    MatFormFieldModule,
+    MatSnackBarModule
   ],
   templateUrl: './customize.html',
   styleUrl: './customize.css',
