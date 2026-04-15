@@ -50,7 +50,7 @@
     </mat-chip-set>
     <div class="selected-syrup-list">
       @for (syrup of selectedSyrups(); track syrup.syrup.name) {
-        <mat-card>
+        <mat-card class="selected-card">
           <div class="card-content">
             {{ syrup.syrup.name }}
             <div class="selected-syrup-actions">

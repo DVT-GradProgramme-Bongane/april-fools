@@ -3,6 +3,10 @@ mat-card {
   padding: 6px;
 }
 
+.confirm-main{
+  padding: 10px;
+}
+
 .card-content {
   display: flex;
   flex: 1;
