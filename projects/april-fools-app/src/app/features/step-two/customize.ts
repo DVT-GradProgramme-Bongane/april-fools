@@ -28,10 +28,9 @@ import { ChaosService } from '../../core/services/chaos';
   templateUrl: './customize.html',
   styleUrl: './customize.css',
 })
-export class Customize implements OnDestroy{
+export class Customize implements OnDestroy {
   availableSyrups = model<Syrup[]>([]);
   selectedSyrups = model<SyrupDetails[]>([]);
- 
 
   back = output<void>();
   review = output<void>();
@@ -47,6 +46,11 @@ export class Customize implements OnDestroy{
   constructor() {
     this.chaosService.startChaos(this.temperature, this.displayTemp);
     this.chaosService.startChaos(this.foamDensity, this.displayFoam);
+  }
+
+  // Chaotic behaviour
+  onMouseEnter(event: MouseEvent) {
+    this.chaosService.onMouseEnter(event);
   }
 
   onTemperatureInput(event: Event) {

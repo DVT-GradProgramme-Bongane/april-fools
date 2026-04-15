@@ -18,11 +18,8 @@
         [(availableSyrups)]="availableSyrup"
         [(selectedSyrups)]="selectedSyrups"
     /></mat-tab>
-    <mat-tab label="Confirm"> 
-      <app-confirm 
-      [coffeeDetails]="coffeeDetails()"
-      [total]="total()" 
-      /> 
+    <mat-tab label="Confirm">
+      <app-confirm [coffeeDetails]="coffeeDetails()" [total]="total()" />
     </mat-tab>
   </mat-tab-group>
 </main>

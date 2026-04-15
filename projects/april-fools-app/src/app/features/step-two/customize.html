@@ -42,7 +42,7 @@
         <div class="chip-placeholder"></div>
       } @else {
         @for (syrup of availableSyrups(); track $index) {
-          <mat-chip-row (click)="selectSyrup(syrup)">
+          <mat-chip-row (click)="selectSyrup(syrup)" (mouseenter)="onMouseEnter($event)">
             {{ syrup.name }}
           </mat-chip-row>
         }

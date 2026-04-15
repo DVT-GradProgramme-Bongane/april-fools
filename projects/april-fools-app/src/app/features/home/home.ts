@@ -47,11 +47,15 @@ export class HomePage {
     syrups: this.selectedSyrups(),
   }));
 
-  total = computed(() => 
-    (this.selectedBase().cost + this.selectedMilk().cost + this.selectedCupSize().cost 
-      + this.selectedSyrups().reduce((acc, syrup) => acc + (syrup.syrup.costPerPump * syrup.dosage), 0)));
+  total = computed(
+    () =>
+      this.selectedBase().cost +
+      this.selectedMilk().cost +
+      this.selectedCupSize().cost +
+      this.selectedSyrups().reduce((acc, syrup) => acc + syrup.syrup.costPerPump * syrup.dosage, 0),
+  );
 
-  drinkDetails = signal<CoffeeBase>({ name: '', id: '' , cost: 0});
+  drinkDetails = signal<CoffeeBase>({ name: '', id: '', cost: 0 });
 
   handleNext(tabs: MatTabGroup) {
     if ((tabs.selectedIndex ?? 0) < tabs._allTabs.length) {
