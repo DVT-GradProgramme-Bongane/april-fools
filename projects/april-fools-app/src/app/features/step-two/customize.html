@@ -1,0 +1,92 @@
+<main class="customize-main">
+  <div class="temperature">
+    <section class="brew-temperature">
+      <h3>Temperature</h3>
+      <mat-card>
+        <mat-card-content>
+          Brew temperature
+          <mat-slider class="example-margin" [max]="100" [min]="0" [step]="1" [discrete]="true">
+            <input
+              matSliderThumb
+              [value]="displayTemp()"
+              (input)="onTemperatureInput($event)"
+              #slider
+            />
+          </mat-slider>
+
+          <span>{{ temperature() }}&deg;C</span>
+        </mat-card-content>
+      </mat-card>
+    </section>
+
+    <section class="foam-density">
+      <mat-card>
+        <mat-card-content>
+          Foam density
+          <mat-slider class="example-margin" [max]="10" [min]="0" [step]="1" [discrete]="true">
+            <input matSliderThumb #slider [value]="displayFoam()" (input)="onFoamInput($event)" />
+          </mat-slider>
+
+          <span>{{ foamDensity() }}</span>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <section class="syrup-extra">
+    <h3>Syrup and Extras</h3>
+    <mat-chip-set>
+      @if (availableSyrups.length !== 0) {
+        <div class="chip-placeholder"></div>
+      } @else {
+        @for (syrup of availableSyrups(); track $index) {
+          <mat-chip-row (click)="selectSyrup(syrup)" (mouseenter)="onMouseEnter($event)">
+            {{ syrup.name }}
+          </mat-chip-row>
+        }
+      }
+    </mat-chip-set>
+    <div class="selected-syrup-list">
+      @for (syrup of selectedSyrups(); track syrup.syrup.name) {
+        <mat-card class="selected-card">
+          <div class="card-content">
+            {{ syrup.syrup.name }}
+            <div class="selected-syrup-actions">
+              <button mat-icon-button (click)="decrease(syrup.syrup)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span>{{ syrup.dosage }}</span>
+              <button mat-icon-button (click)="increase(syrup.syrup)">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button mat-icon-button (click)="removeSyrup(syrup.syrup)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      }
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+  <div class="finalize-actions">
+    <button matButton="outlined" class="back-button" (click)="onBack($event)">
+      Back <mat-icon>chevron_left</mat-icon>
+    </button>
+    @if (chaosButton()) {
+      <mat-spinner></mat-spinner>
+    } @else {
+      <button
+        matButton="outlined"
+        class="review-button"
+        (click)="onReview($event)"
+        (mouseenter)="onButtonEnter($event); openSnackBar()"
+      >
+        Review Order <mat-icon>chevron_right</mat-icon>
+      </button>
+    }
+  </div>
+</main>

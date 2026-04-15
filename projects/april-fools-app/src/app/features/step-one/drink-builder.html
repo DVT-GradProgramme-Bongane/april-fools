@@ -1,0 +1,29 @@
+<main>
+  <h3>Choose your base</h3>
+  <mat-chip-listbox [(ngModel)]="selectedBase">
+    @for (coffeeBase of coffeeBases; track coffeeBase.name) {
+      <mat-chip-option [value]="coffeeBase">
+        {{ coffeeBase.name }}
+      </mat-chip-option>
+    }
+  </mat-chip-listbox>
+  <h3>Milk</h3>
+  <mat-chip-listbox [(ngModel)]="selectedMilk">
+    @for (milk of milkTypes; track milk.id) {
+      <mat-chip-option [value]="milk">
+        {{ milk.name }}
+      </mat-chip-option>
+    }
+  </mat-chip-listbox>
+  <h3>Cup Size</h3>
+  <mat-chip-listbox [(ngModel)]="selectedCupSize">
+    @for (cupSize of cupSizes; track cupSize.id) {
+      <mat-chip-option [value]="cupSize">
+        {{ cupSize.name }}
+      </mat-chip-option>
+    }
+  </mat-chip-listbox>
+  <button matButton="outlined" class="next-button" (click)="onNext($event)">
+    Next <mat-icon>chevron_right</mat-icon>
+  </button>
+</main>

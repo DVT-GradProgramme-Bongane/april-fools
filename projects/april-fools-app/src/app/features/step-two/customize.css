@@ -1,0 +1,48 @@
+.mat-mdc-slider {
+  max-width: 450px;
+  width: 100%;
+}
+
+.customize-main {
+  padding: 10px;
+}
+
+.brew-temperature,
+.foam-density {
+  margin-bottom: 20px;
+}
+
+.syrup-extra {
+  margin-bottom: 20px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-syrup-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip-placeholder {
+  height: 32px;
+  width: 100%;
+}
+
+.selected-syrup-list mat-card + mat-card {
+  margin-top: 10px;
+}
+
+.finalize-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.selected-card {
+  padding-left: 10px;
+}

@@ -1,0 +1,45 @@
+<main class="confirm-main">
+  <h3>Your Order</h3>
+  <mat-card>
+    <div class="card-content">
+      @if (!coffeeDetails()) {
+        <span>Drink</span>
+        <span>Temperature</span>
+        <span>Foam</span>
+        <span>Syrups</span>
+      } @else {
+        <div class="drink-details">
+          <span>Drink</span>
+          <span
+            >{{ coffeeDetails().drink.milk.name }} {{ coffeeDetails().drink.base.name }}
+            {{ coffeeDetails().drink.cup.name }}</span
+          >
+        </div>
+        <div class="drink-details">
+          <span>Temperature</span>
+          <span>{{ coffeeDetails().temperature }}&deg;C</span>
+        </div>
+        <div class="drink-details">
+          <span>Foam</span>
+          <span>{{ coffeeDetails().foam }}</span>
+        </div>
+        <div class="drink-details">
+          <span>Syrups</span>
+          <span class="syrup-details">
+            @for (syrup of coffeeDetails().syrups; track $index) {
+              <span>{{ syrup.syrup.name }}</span>
+              <span> × {{ syrup.dosage }}, </span>
+            }
+          </span>
+        </div>
+      }
+    </div>
+    <mat-card-footer>
+      <mat-divider></mat-divider>
+      <span class="drink-details">
+        <span>Total</span>
+        <span>{{ total() | rand }}</span>
+      </span>
+    </mat-card-footer>
+  </mat-card>
+</main>
