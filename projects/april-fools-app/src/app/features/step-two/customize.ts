@@ -30,7 +30,7 @@ import { SyrupDetails } from '../../model/syrup';
 export class Customize {
   availableSyrups = model<Syrup[]>([]);
   selectedSyrups = model<SyrupDetails[]>([]);
-  syrupDosage = 0;
+ 
 
   back = output<void>();
   review = output<void>();
